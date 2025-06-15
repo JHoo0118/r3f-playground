@@ -2,9 +2,13 @@ import { PerspectiveCamera, useKeyboardControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { RapierRigidBody, RigidBody, vec3 } from "@react-three/rapier";
 import { useRef } from "react";
-import { Vector3 } from "three";
+import {
+  PerspectiveCamera as PerspectiveCameraType,
+  Euler,
+  Quaternion,
+  Vector3,
+} from "three";
 import { Controls } from "../App";
-import * as THREE from "three";
 
 const MOVEMENT_SPEED = 5;
 const JUMP_FORCE = 8;
@@ -12,7 +16,7 @@ const ROTATION_SPEED = 5;
 
 export const Player = () => {
   const rb = useRef<RapierRigidBody | null>(null);
-  const camera = useRef<THREE.PerspectiveCamera | null>(null);
+  const camera = useRef<PerspectiveCameraType | null>(null);
   const cameraTarget = useRef(new Vector3(0, 0, 0));
   const [, get] = useKeyboardControls();
   const inTheAir = useRef(false);
@@ -37,8 +41,8 @@ export const Player = () => {
     }
 
     // 4. 누적된 회전값으로 쿼터니언 만들고 강제로 적용
-    const quaternion = new THREE.Quaternion();
-    quaternion.setFromEuler(new THREE.Euler(0, rotationRef.current, 0));
+    const quaternion = new Quaternion();
+    quaternion.setFromEuler(new Euler(0, rotationRef.current, 0));
     rb.current?.setRotation(quaternion, true);
 
     // 5. 이동 벡터 초기화 및 앞/뒤 이동 입력 반영
@@ -51,7 +55,7 @@ export const Player = () => {
     }
 
     // 6. 회전값을 이동 벡터에 적용해서 방향 맞춤
-    vel.applyEuler(new THREE.Euler(0, rotationRef.current, 0));
+    vel.applyEuler(new Euler(0, rotationRef.current, 0));
 
     // 7. 점프 처리
     const curVel = rb.current?.linvel();

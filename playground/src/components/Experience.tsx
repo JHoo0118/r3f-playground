@@ -7,17 +7,18 @@ import {
 } from "@react-three/drei";
 import { BallCollider, CuboidCollider, RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
-import * as THREE from "three";
+import {
+  PerspectiveCamera as PerspectiveCameraType,
+  Object3D,
+  CameraHelper,
+} from "three";
 import { Player } from "./Player";
 import { Playground } from "./Playground";
 
 export const Experience = () => {
-  const shadowCameraRef = useRef<THREE.PerspectiveCamera>(null!);
+  const shadowCameraRef = useRef<PerspectiveCameraType>(null!);
 
-  useHelper(
-    shadowCameraRef as React.RefObject<THREE.Object3D>,
-    THREE.CameraHelper
-  );
+  useHelper(shadowCameraRef as React.RefObject<Object3D>, CameraHelper);
 
   return (
     <>
