@@ -2,3 +2,4 @@ packages:
   - "playground"
   - "multi-views"
   - "camera-controls"
+  - "render-targets"
