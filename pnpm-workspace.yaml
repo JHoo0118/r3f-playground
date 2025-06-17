@@ -4,3 +4,4 @@ packages:
   - "camera-controls"
   - "render-targets"
   - "post-processing"
+  - "theatre"
