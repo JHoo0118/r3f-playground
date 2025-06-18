@@ -5,3 +5,4 @@ packages:
   - "render-targets"
   - "post-processing"
   - "theatre"
+  - "optimization"
