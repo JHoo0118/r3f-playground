@@ -6,3 +6,4 @@ packages:
   - "post-processing"
   - "theatre"
   - "optimization"
+  - "basic-shader"
