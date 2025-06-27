@@ -7,3 +7,4 @@ packages:
   - "theatre"
   - "optimization"
   - "basic-shader"
+  - "shaping"
