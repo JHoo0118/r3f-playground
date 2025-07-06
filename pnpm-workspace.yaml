@@ -8,3 +8,6 @@ packages:
   - "optimization"
   - "basic-shader"
   - "shaping"
+  - "image-slider"
+  - "water-shader"
+  - "shader-transitions"
